@@ -3,6 +3,7 @@ docs_build
 */config
 */logs
 *.pyc
+*.pyo
 *.komodoproject
 *.pydevproject
 *.sqlite
@@ -28,3 +29,7 @@ docs/presentations
 cli/ovz
 docs/static/doc
 cli/tests/backend/old
+docker
+docker.bak
+web/tomato/static
+.idea
