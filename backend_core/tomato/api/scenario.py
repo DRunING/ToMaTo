@@ -9,9 +9,11 @@ def scenario_save(id_, data=None):
     scenario_info = Scenario.create(**data)
     return scenario_info
 
+
 # def scenario_deploy(id_):
 #     """Get the scenario specified by scenario id, and import it"""
 #     pass
+
 
 def scenario_topology_info_json(id_):
     return Scenario.get_topology_info_json(id_)
@@ -29,6 +31,7 @@ def scenario_modify(id_, data=None):
     response = Scenario.modify_by_id(id_, **data)
     return response
 
+
 def scenario_remove(id_):
     """Remove the scenario specified by scenario id"""
     try:
@@ -42,3 +45,6 @@ def scenario_count():
     """Return the number of scenarios, debug usage"""
     return Scenario.get_count()
 
+
+def scenario_info(id_):
+    return Scenario.info_by_id(id_)

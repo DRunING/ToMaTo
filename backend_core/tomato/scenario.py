@@ -57,6 +57,11 @@ class Scenario(BaseDocument):
         return sc_info
 
     @classmethod
+    def info_by_id(cls, id_):
+        scenario = cls.get(id_)
+        return scenario.info()
+
+    @classmethod
     def get_count(cls):
         return len(cls.objects.filter())
 

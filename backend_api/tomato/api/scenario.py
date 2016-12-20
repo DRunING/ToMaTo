@@ -36,3 +36,7 @@ def scenario_remove(id_):
     response = get_backend_core_proxy().scenario_remove(id_)
     return response
 
+
+def scenario_info(id_):
+    response = get_backend_core_proxy().scenario_info(id_)
+    return response

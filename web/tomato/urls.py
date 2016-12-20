@@ -179,8 +179,13 @@ urlpatterns = patterns('',
     (r'^dumpmanager/group/(?P<group_id>\w+)/source/(?P<source>[^/]+)/dump/(?P<dump_id>[\d_.]+)/export_data$', 'tomato.dumpmanager.dump_export_with_data'),
 
     # Topology Scenario, by Chang Rui
-    # (r'^scenario/$', 'tomato.scenario.scenario_list'),
-    url(r'^scenario/$', 'tomato.scenario.scenario_list', name='scenario_list'),
+    url(r'^scenario/$', 'tomato.scenario.list', name='scenario_list'),  # TODO: all, my, public
+    url(r'^scenario/$', 'tomato.scenario.list', name='scenario_list_my'),
+    url(r'^scenario/$', 'tomato.scenario.list', name='scenario_list_public'),
+    url(r'^scenario/(?P<id_>\w{24})/$', 'tomato.scenario.info', name='scenario_info'),
+    url(r'^scenario/(?P<id_>\w{24})/edit$', 'tomato.scenario.edit', name='scenario_edit'),
+    url(r'^scenario/(?P<id_>\w{24})/remove$', 'tomato.scenario.remove', name='scenario_remove'),
+
     (r'ajax/topology/(?P<id_>\w{24})/save_as_scenario$', 'tomato.ajax.save_as_scenario'),
     (r'ajax/scenario/(?P<id_>\w{24})/remove$', 'tomato.ajax.scenario_remove'),
     (r'ajax/scenario/(?P<id_>\w{24})/deploy$', 'tomato.ajax.scenario_deploy'),
