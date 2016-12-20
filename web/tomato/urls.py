@@ -179,9 +179,10 @@ urlpatterns = patterns('',
     (r'^dumpmanager/group/(?P<group_id>\w+)/source/(?P<source>[^/]+)/dump/(?P<dump_id>[\d_.]+)/export_data$', 'tomato.dumpmanager.dump_export_with_data'),
 
     # Topology Scenario, by Chang Rui
-    (r'^scenario/$', 'tomato.scenario.scenario_list'),
+    # (r'^scenario/$', 'tomato.scenario.scenario_list'),
+    url(r'^scenario/$', 'tomato.scenario.scenario_list', name='scenario_list'),
     (r'ajax/topology/(?P<id_>\w{24})/save_as_scenario$', 'tomato.ajax.save_as_scenario'),
-    (r'ajax/scenario/(?P<id_>\w{24})/remove', 'tomato.ajax.scenario_remove'),
-    (r'ajax/scenario/(?P<id_>\w{24})/deploy', 'tomato.ajax.scenario_deploy'),
-    (r'ajax/scenario/(?P<id_>\w{24})/modify', 'tomato.ajax.scenario_modify'),
+    (r'ajax/scenario/(?P<id_>\w{24})/remove$', 'tomato.ajax.scenario_remove'),
+    (r'ajax/scenario/(?P<id_>\w{24})/deploy$', 'tomato.ajax.scenario_deploy'),
+    (r'ajax/scenario/(?P<id_>\w{24})/modify$', 'tomato.ajax.scenario_modify'),
 )
