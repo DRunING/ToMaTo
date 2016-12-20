@@ -176,5 +176,12 @@ urlpatterns = patterns('',
     (r'^dumpmanager/group/(?P<group_id>\w+)/remove_from_favorites', 'tomato.dumpmanager.errorgroup_unfavorite'),
 		(r'^dumpmanager/group/(?P<group_id>\w+)/github', 'tomato.dumpmanager.errorgroup_github'),
     (r'^dumpmanager/group/(?P<group_id>\w+)/source/(?P<source>[^/]+)/dump/(?P<dump_id>[\d_.]+)/export$', 'tomato.dumpmanager.dump_export'),
-    (r'^dumpmanager/group/(?P<group_id>\w+)/source/(?P<source>[^/]+)/dump/(?P<dump_id>[\d_.]+)/export_data$', 'tomato.dumpmanager.dump_export_with_data')
+    (r'^dumpmanager/group/(?P<group_id>\w+)/source/(?P<source>[^/]+)/dump/(?P<dump_id>[\d_.]+)/export_data$', 'tomato.dumpmanager.dump_export_with_data'),
+
+    # Topology Scenario, by Chang Rui
+    (r'^scenario/$', 'tomato.scenario.scenario_list'),
+    (r'ajax/topology/(?P<id_>\w{24})/save_as_scenario$', 'tomato.ajax.save_as_scenario'),
+    (r'ajax/scenario/(?P<id_>\w{24})/remove', 'tomato.ajax.scenario_remove'),
+    (r'ajax/scenario/(?P<id_>\w{24})/deploy', 'tomato.ajax.scenario_deploy'),
+    (r'ajax/scenario/(?P<id_>\w{24})/modify', 'tomato.ajax.scenario_modify'),
 )

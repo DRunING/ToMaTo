@@ -561,6 +561,15 @@ var Editor = Class.extend({
 
 		var group = tab.addGroup("Management");
 
+        group.addElement(Menu.button({  // by Chang Rui
+            label: "Save As Scenario",
+            icon: "img/export16.png",
+            toggle: false,
+            small: false,
+            func: function () {
+                t.topology.saveAsScenarioDialog();
+            }
+        }));
 		group.addElement(Menu.button({
 			label: "Renew",
 			icon: "img/renew.png",

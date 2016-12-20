@@ -414,7 +414,21 @@ var Topology = Class.extend({
 			}});
 		}});
 	},
-	showDebugInfo: function() {
+    saveAsScenario: function(data) {    // by Chang Rui
+        var t = this;
+        ajax({
+            url: 'topology/' + this.id + '/save_as_scenario',
+            data: data,
+            successFn: function (result) {
+                console.log("Save as scenario: Success.");
+                console.log("Result: " + result)
+            },
+            errorFn: function (error) {
+                new errorWindow({error:error});
+            }
+        })
+    },
+    showDebugInfo: function() {
 		var t = this;
 		ajax({
 			url: 'topology/'+this.id+'/info',
@@ -575,7 +589,89 @@ var Topology = Class.extend({
 		}
 		dialog.show();
 	},
-	tabbedConsoleWindow: function() {
+    saveAsScenarioDialog: function() {    // by Chang Rui
+        var t = this;
+        var dialog;
+        var id, name, description, accessibility, author;
+        var choices = {
+            "private": "Private",
+            "public": "Public",
+        };
+        // , name, description, timeout;
+        dialog = new AttributeWindow({
+            title: "Save As Scenario",
+            width: 500,
+            // height: 400,
+            // closable: false,
+            buttons: [
+                {
+                    text: "Save",
+                    id: "scenario_dialog_save",
+                    click: function() {
+                        var data = {
+                            "topology_id": t.id,
+                            "name": name.getValue(),
+                            "description": description.getValue(),
+                            "accessibility": accessibility.getValue(),
+                            "author": author.getValue()
+                        };
+                        t.saveAsScenario(data);
+                        if (dialog != null) {
+                            dialog.remove()
+                        }
+                        dialog = null;
+                    }
+                },
+                {
+                    text: "Close",
+                    click: function() {
+                        dialog.remove();
+                    }
+                }
+            ]
+        });
+        // dialog.addText("<div>123456789.</div>")
+        id = dialog.add(new TextElement({
+            name: "id",
+            label: "ID",
+            disabled: true,
+            value: this.id,
+        }));
+        author = dialog.add(new TextElement({
+            name: "author",
+            label: "Author",
+            disabled: true,
+            value: this.editor.options.user.name,
+        }));
+        name = dialog.add(new TextElement({
+            name: "name",
+            label: "Name",
+            help_text: "The name of your scenario",
+            onChangeFct: function() {
+                // TODO: name inspection ineffective?
+                if(this.value == '') {
+                    $('#scenario_dialog_save').button('disable');
+                } else {
+                    $('#scenario_dialog_save').button('enable');
+                }
+            },
+        }));
+        description = dialog.add(new TextAreaElement({
+            name: "description",
+            label: "Description",
+            help_text: "The text description of your scenario.",
+        }));
+        accessibility = dialog.add(new ChoiceElement({
+            name: "accessibility",
+            label: "Accessibility",
+            // value: choices[0],
+            choices: choices,
+            help_text: "Whether other users can use the scenario."
+        }));
+
+        dialog.show();
+    },
+    tabbedConsoleWindow: function() {
 	    window.open('../topology/'+this.id+'/tabbed-console', '_blank', "innerWidth=760,innerheight=483,status=no,toolbar=no,menubar=no,location=no,hotkeys=no,scrollbars=no");
 	},
 	initialDialog: function() {

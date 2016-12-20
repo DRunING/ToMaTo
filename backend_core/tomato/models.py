@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 from .topology import Topology
+from .scenario import Scenario    # by Chang Rui
 from .elements import Element
 from .elements.generic import VMElement, VMInterface
 from .elements.openvz import OpenVZ, OpenVZ_Interface

@@ -59,3 +59,6 @@ from topology import topology_action, topology_create, topology_info,\
 from orchestration.topology_export_import import topology_export, topology_import
 
 from orchestration.resources import resources_map
+
+# by Chang Rui
+from scenario import scenario_save, scenario_remove, scenario_deploy, scenario_modify, scenario_list

@@ -104,3 +104,25 @@ def account_modify(api, request, name, **attrs): #@ReservedAssignment
 	info = api.account_modify(name, attrs)
 	request.session["user"].updateData(api, data=info)
 	return info
+
+# by Chang Rui
+@wrap_json
+def save_as_scenario(api, request, id_, **data):
+	# return "Save As Scenario from web. id=%s, data=%s" % (id, data)
+	info = api.scenario_save(id_, data)
+	return info
+
+@wrap_json
+def scenario_remove(api, request, id_, **data):
+	response = api.scenario_remove(id_)
+	return response
+
+@wrap_json
+def scenario_deploy(api, request, id_, **data):
+	response = api.scenario_deploy(id_)
+	return response
+
+@wrap_json
+def scenario_modify(api, request, id_, **data):
+	response = api.scenario_modify(id_, data)
+	return response
