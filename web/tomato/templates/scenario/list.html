@@ -305,36 +305,45 @@
         <li><a href="{% url "scenario_list_my" %}">Showing my scenarios</a></li>
         <li><a href="{% url "scenario_list_public" %}">Showing public scenarios</a></li>
     </ul>
+
 </div>
 
 <div class="skip-sm"></div>
 
+<script src="/js/enhancetable.js"></script>
+
 <table class="sortable,filterable table table-striped" id="scenario_table">
     {% if scenario_list %}
-        <tr>
-            {# <th>ID</th> #}
-            <th>Name</th>
-            <th>Description</th>
-            <th>Accessibility</th>
-            <th>Author</th>
-            <th>Create Time</th>
-            <th>Edit</th>
-            <th>Deploy</th>
-            <th>Delete</th>
-        </tr>
+        <thead>
+            <tr>
+                {# <th>ID</th> #}
+                <th>Name</th>
+                <th>Description</th>
+                <th>Accessibility</th>
+                <th>Author</th>
+                <th>Create Time</th>
+                {#<th>Edit</th>#}
+                {#<th>Deploy</th>#}
+                {#<th>Delete</th>#}
+            </tr>
+        </thead>
+        <tbody>
         {% for scenario in scenario_list %}
             <tr id="tr_{{ scenario.id }}">
-                {# <td>{{ scenario.id }}</td> #}
+                {#<td>{{ scenario.id }}</td>#}
                 <td><a href='{% url "scenario_info" scenario.id %}'>{{ scenario.name }}</a></td>
                 <td>{{ scenario.description }}</td>
                 <td>{{ scenario.accessibility }}</td>
                 <td>{{ scenario.author }}</td>
                 <td>{{ scenario.create_time }}</td>
-                <td><button class="editButton" onclick="showEditDialog('{{ scenario.id }}')">Edit</button></td>
-                <td><button class="deployButton" onclick="showDeployDialog('{{ scenario.id }}')">Deploy</button></td>
-                <td><button class="deleteButton" onclick="showDeleteDialog('{{ scenario.id }}')">Delete</button></td>
+                {#<td><button class="editButton" onclick="showEditDialog('{{ scenario.id }}')">Edit</button></td>#}
+                {#<td><button class="deployButton" onclick="showDeployDialog('{{ scenario.id }}')">Deploy</button></td>#}
+                {#<td><button class="deleteButton" onclick="showDeleteDialog('{{ scenario.id }}')">Delete</button></td>#}
             </tr>
         {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
     {% else %}
         No scenarios. You can save a topology as a scenario in the edit panel of the topology.
     {% endif %}

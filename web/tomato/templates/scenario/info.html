@@ -40,16 +40,26 @@
         <th>{{ scenario.description }}</th>
     </tr>
     <tr>
-        <th>Author:</th>
-        <th>{{ scenario.author }}</th>
-    </tr>
-    <tr>
         <th>Accessibility:</th>
         <th>{{ scenario.accessibility }}</th>
     </tr>
     <tr>
+        <th>Author:</th>
+        <th>{{ scenario.author }}</th>
+    </tr>
+    <tr>
         <th>Creation Time:</th>
         <th>{{ scenario.create_time }}</th>
+    </tr>
+    <tr>
+        <th>Topology Info:</th>
+        <th>
+            <label style="width: 80%; height: 30em">
+                <textarea style="width: 100%; height: 30em">
+                    {{ scenario.topology_info_json }}
+                </textarea>
+            </label>
+        </th>
     </tr>
 </table>
 
@@ -59,12 +69,16 @@
 
 {% if request.session.user.isGlobalHostManager %}
 <form>
-  <button type="submit" formaction="{%url 'scenario_edit' scenario.id %}" class="btn btn-warning">
-      <span class="glyphicon glyphicon-pencil"></span>
-      edit scenario
-  </button>
-  <button type="submit" formaction="{%url 'scenario_remove' scenario.id %}" class="btn btn-danger">
-      <span class="glyphicon glyphicon-trash"></span>
+    <button type="submit" formaction="{%url 'scenario_deploy' scenario.id %}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-cog"></span>
+        deploy scenario
+    </button>
+    <button type="submit" formaction="{%url 'scenario_edit' scenario.id %}" class="btn btn-warning">
+        <span class="glyphicon glyphicon-pencil"></span>
+        edit scenario
+    </button>
+    <button type="submit" formaction="{%url 'scenario_remove' scenario.id %}" class="btn btn-danger">
+        <span class="glyphicon glyphicon-trash"></span>
       remove scenario
   </button>
 </form>

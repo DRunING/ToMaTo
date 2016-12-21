@@ -185,6 +185,7 @@ urlpatterns = patterns('',
     url(r'^scenario/(?P<id_>\w{24})/$', 'tomato.scenario.info', name='scenario_info'),
     url(r'^scenario/(?P<id_>\w{24})/edit$', 'tomato.scenario.edit', name='scenario_edit'),
     url(r'^scenario/(?P<id_>\w{24})/remove$', 'tomato.scenario.remove', name='scenario_remove'),
+    url(r'^scenario/(?P<id_>\w{24})/deploy$', 'tomato.scenario.deploy', name='scenario_deploy'),
 
     (r'ajax/topology/(?P<id_>\w{24})/save_as_scenario$', 'tomato.ajax.save_as_scenario'),
     (r'ajax/scenario/(?P<id_>\w{24})/remove$', 'tomato.ajax.scenario_remove'),
