@@ -4,7 +4,7 @@
 import os
 from django import VERSION as DJANGO_VERSION
 
-CONFIG_YAML_PATH = "/etc/tomato/config.yaml"
+CONFIG_YAML_PATH = "/etc/tomato/config/config.yaml"
 TOMATO_MODULE = "web"
 
 DEBUG = True
